@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Moa Lindgren CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a maroon header card with name, EN/FR switch and contact chips; below it a two-column body, sidebar cards plus a main column of timelines. Deliberately light-only so every café sees the same CV. */
+:root {
+  --bg: #f3f3f2;
+  --surface: #ffffff;
+  --ink: #1f1f1f;
+  --muted: #6b6b6b;
+  --line: #e4e4e4;
+  --accent: #6a1e2b;
+  --accent-ink: #fbf1f0;
+  --accent-soft: #efefee;
+  --link: #7a2433;
+  --bean: #8a5434;
+  --bean-empty: #dcdcdc;
+  --font-display: "Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+/* Language switching */
+html:not([data-lang="fr"]) [data-l="fr"],
+html[data-lang="fr"] [data-l="en"] { display: none !important; }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6; padding-inline: 16px; padding-block: 28px 56px; }
+.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 20px; }
+
+/* Header card */
+.hero { background-color: var(--accent); background-image: linear-gradient(180deg, rgba(40,10,16,.45) 0%, rgba(40,10,16,0) 28%, rgba(74,20,30,.2) 50%, rgba(74,20,30,.9) 100%), url("geneva.jpg"); background-size: cover; background-position: 40% 62%; color: var(--accent-ink); border-radius: 24px; padding: clamp(28px, 5vw, 52px); min-height: clamp(380px, 46vw, 480px); display: grid; grid-template-rows: auto 1fr auto; align-content: stretch; gap: 24px; position: relative; overflow: hidden; }
+.hero-top { align-self: end; }
+.hero h1, .hero .tagline { text-shadow: 0 1px 12px rgba(30,6,12,.35); }
+.hero-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+.eyebrow { font: 500 12px var(--font-mono); letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+.lang-switch { display: inline-flex; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 3px; }
+.lang-switch button { font: 600 13px var(--font-mono); letter-spacing: .06em; color: var(--accent-ink); background: none; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; opacity: .75; }
+.lang-switch button[aria-pressed="true"] { background: var(--accent-ink); color: var(--accent); opacity: 1; }
+.lang-switch button:hover { opacity: 1; }
+.hero-top { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; position: relative; z-index: 1; }
+.mono { width: 76px; height: 76px; border-radius: 50%; background: var(--accent-ink); color: var(--accent); display: grid; place-items: center; font: 700 26px var(--font-display); letter-spacing: -.02em; flex: none; }
+.hero-name { display: grid; gap: 8px; min-width: 0; }
+h1 { font-family: var(--font-display); font-weight: 200; font-size: clamp(40px, 7vw, 64px); line-height: .95; letter-spacing: -.025em; margin: 0; }
+.tagline { font-size: clamp(16px, 2vw, 19px); margin: 0; opacity: .9; max-width: 46ch; text-wrap: balance; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.chip { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 7px 14px; font-size: 14px; overflow-wrap: break-word; max-width: 100%; color: inherit; font-family: inherit; }
+.chip b { flex: none; font: 500 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+button.chip, a.chip { cursor: pointer; text-decoration: none; }
+button.chip:hover, a.chip:hover { background: rgba(255,255,255,.18); }
+.chip .hint { font: 500 11px var(--font-mono); opacity: .7; }
+:focus-visible { outline: 2px solid var(--bean); outline-offset: 3px; }
+
+/* Body */
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+@media (max-width: 800px) { .grid { grid-template-columns: minmax(0, 1fr); } aside { order: 2; } }
+aside, main { display: grid; gap: 20px; min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(22px, 3.5vw, 34px); min-width: 0; }
+h2 { font-family: var(--font-display); font-weight: 400; font-size: 21px; letter-spacing: -.01em; margin: 0 0 18px; }
+.profile p { margin: 0; font-size: 16.5px; max-width: 64ch; }
+
+/* Languages */
+.langs { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.langs li { display: flex; align-items: center; gap: 16px; }
+.lang-row { display: contents; }
+.lang-row strong { width: 110px; flex: none; font-weight: 500; }
+.langs .beans { order: 1; }
+.langs .lang-level { order: 2; }
+.lang-level { font-size: 13px; color: var(--muted); }
+.beans { display: flex; gap: 6px; }
+.beans svg { width: 13px; height: 16px; }
+.beans .on { fill: var(--bean); }
+.beans .off { fill: var(--bean-empty); }
+.beans .crease { fill: none; stroke: var(--surface); stroke-width: 1.3; stroke-linecap: round; }
+
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { background: var(--accent-soft); color: var(--ink); border-radius: 999px; padding: 6px 13px; font-size: 14px; }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.facts li { display: grid; gap: 1px; }
+.facts .k { font: 500 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Timeline */
+.timeline { display: grid; gap: 26px; position: relative; padding-left: 26px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: var(--line); border-radius: 2px; }
+.entry { position: relative; display: grid; gap: 2px; }
+.entry::before { content: ""; position: absolute; left: -26px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--link); }
+.entry-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
+.role { font-family: var(--font-display); font-weight: 400; font-size: 18px; line-height: 1.3; margin: 0; }
+.when { font: 500 12.5px var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.where { color: var(--link); font-weight: 500; font-size: 14px; margin: 0 0 8px; }
+.entry ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; }
+.entry ul li::marker { color: var(--muted); }
+.entry p { margin: 0; }
+
+/* Sign-off */
+.signoff { background: none; border-radius: 20px; padding: clamp(22px, 3.5vw, 34px); display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+.signoff p { margin: 0; font-size: 16.5px; max-width: 60ch; flex: 1 1 320px; }
+.portrait { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; flex: none; }
+.signature { display: block; width: 170px; max-width: 45%; height: auto; flex: none; }
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.notes li { padding-left: 18px; position: relative; }
+.notes li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; border-radius: 50%; background: var(--link); }
+.pdf-row { display: flex; justify-content: flex-end; }
+.pdf-btn { display: inline-flex; align-items: center; gap: 8px; font: 500 14px var(--font-body); color: var(--link); border: 1px solid var(--link); border-radius: 999px; padding: 9px 18px; text-decoration: none; }
+.pdf-btn:hover { background: var(--accent-soft); }
+.pdf-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media print {
+  @page { size: A4; margin: 10mm; }
+  :root { --bg: #ffffff; --ink: #1f1f1f; --muted: #6b6b6b; --line: #e3e3e3; --bean-empty: #dcdcdc; }
+  body { padding: 0; background: #fff; font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .lang-switch, .pdf-row, .chip .hint { display: none !important; }
+  .wrap, .grid, main { gap: 0; }
+  .hero { min-height: 230px; padding: 26px 30px; gap: 16px; border-radius: 0; margin-bottom: 4px; }
+  h1 { font-size: 46px; }
+  h2 { font-size: 17px; margin-bottom: 10px; break-after: avoid; }
+  .chips { gap: 6px 26px; }
+  .chip { background: none; border: 0; border-radius: 0; padding: 0; }
+  .card { background: none; border: 0; border-radius: 0; padding: 14px 0; border-top: 1px solid var(--line); }
+  main > .card:first-child { border-top: 0; }
+  .profile p, .signoff p { font-size: 13.5px; }
+  .timeline { gap: 14px; }
+  .role { font-size: 15px; }
+  .tags { gap: 4px 0; }
+  .tags li { background: none; border-radius: 0; padding: 0; }
+  .tags li + li::before { content: "\00B7"; margin: 0 10px; color: var(--muted); }
+  .signoff { background: none; border-radius: 0; padding: 14px 0; border-top: 1px solid var(--line); }
+  .entry, .langs, .notes, .tags, .signoff { break-inside: avoid; }
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-bar">
+      <span class="eyebrow"><span data-l="en">Barista CV &middot; Geneva</span><span data-l="fr">CV barista &middot; Genève</span></span>
+      <div class="lang-switch" role="group" aria-label="Language / Langue">
+        <button type="button" id="btn-en" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" id="btn-fr" data-set="fr" aria-pressed="false">FR</button>
+      </div>
+    </div>
+    <div class="hero-top">
+      <div class="hero-name">
+        <h1>Moa Lindgren</h1>
+        <p class="tagline"><span data-l="en">Barista-in-training with a background in global sustainability</span><span data-l="fr">Barista en formation, avec un parcours dans le développement durable à l’international</span></p>
+      </div>
+    </div>
+    <div class="chips">
+      <a class="chip" href="https://wa.me/46763237372" target="_blank" rel="noopener">+46 763 23 73 72<span class="hint">WhatsApp</span></a>
+      <button class="chip" id="copy-email" type="button"><span id="email">lindgren.moa@gmail.com</span><span class="hint" id="copy-hint"></span></button>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <main>
+      <section class="card profile">
+        <h2><span data-l="en">Profile</span><span data-l="fr">Profil</span></h2>
+        <p data-l="en">Before my career in employment and labour rights, most recently at the International Labour Organization in Geneva, I spent several years working in restaurants, a café and a hotel. I miss that work, and I want to go back to it and learn the craft of specialty coffee properly. In previous jobs, people have appreciated that I see what needs to be done without waiting to be asked, and that I am collaborative and considerate. I am used to busy shifts and international teams, I enjoy talking with guests, and I care about where coffee comes from and how it is produced.</p>
+        <p data-l="fr">Avant ma carrière dans l’emploi et le droit du travail, dernièrement à l’Organisation internationale du Travail à Genève, j’ai travaillé plusieurs années dans la restauration, dans un café et dans un hôtel. Ce travail me manque, et je souhaite y revenir pour apprendre sérieusement le métier du café de spécialité. Dans mes emplois précédents, on a apprécié que je voie ce qu’il y a à faire sans attendre qu’on me le demande, et que je sois collaborative et attentionnée. J’ai l’habitude des services chargés et des équipes internationales, j’aime échanger avec les clients, et je m’intéresse à l’origine du café et à ses conditions de production.</p>
+      </section>
+
+      <section class="card">
+        <h2><span data-l="en">Hospitality experience</span><span data-l="fr">Expérience en restauration et hôtellerie</span></h2>
+        <div class="timeline">
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Waitress</span><span data-l="fr">Serveuse</span></h3><span class="when"><span data-l="en">Apr 2016 – Aug 2018</span><span data-l="fr">avr. 2016 – août 2018</span></span></div>
+            <p class="where">Inferno Restaurant and Bar, Lund, <span data-l="en">Sweden</span><span data-l="fr">Suède</span></p>
+            <ul data-l="en">
+              <li>Served guests in a fast-paced, high-volume pub and restaurant known for its lively atmosphere, craft beer selection and regular events like live music and quizzes.</li>
+              <li>Handled table service, order-taking and POS systems while keeping the room warm, welcoming and organised during busy weekend shifts.</li>
+              <li>Supported inventory management and stock ordering, and kept a smooth flow at the counter.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Service dans un pub-restaurant animé à fort débit, connu pour son ambiance, sa sélection de bières artisanales et ses soirées régulières (concerts, quiz).</li>
+              <li>Service à table, prise de commandes et encaissement, en gardant une salle chaleureuse, accueillante et bien organisée pendant les week-ends chargés.</li>
+              <li>Participation à la gestion des stocks et aux commandes, et maintien d’un service fluide au comptoir.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Café staff</span><span data-l="fr">Employée de café</span></h3><span class="when"><span data-l="en">Jun – Aug 2015</span><span data-l="fr">juin – août 2015</span></span></div>
+            <p class="where">Lerums Delikatessen, Lerum, <span data-l="en">Sweden</span><span data-l="fr">Suède</span></p>
+            <ul data-l="en">
+              <li>Prepared sandwiches, salads and other food to food-safety standards.</li>
+              <li>Handled orders and payments, including catering orders and invoicing.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Préparation de sandwichs, salades et autres plats dans le respect des normes d’hygiène.</li>
+              <li>Gestion des commandes et des paiements, y compris les commandes traiteur et la facturation.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Hotel staff</span><span data-l="fr">Employée d’hôtel</span></h3><span class="when"><span data-l="en">Jun 2010 – Sep 2012</span><span data-l="fr">juin 2010 – sept. 2012</span></span></div>
+            <p class="where">Ibis Hotel, Lerum, <span data-l="en">Sweden</span><span data-l="fr">Suède</span></p>
+            <ul data-l="en">
+              <li>Welcomed guests at reception, managed check-ins and handled housekeeping to keep the hotel clean and welcoming.</li>
+              <li>Prepared food, served drinks in the bar and managed kitchen prep and stock.</li>
+              <li>Learned to switch quickly between guest service and practical behind-the-scenes work.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Accueil des clients à la réception, gestion des arrivées et entretien des chambres pour un hôtel propre et accueillant.</li>
+              <li>Préparation des repas, service au bar, mise en place en cuisine et gestion des stocks.</li>
+              <li>Habitude de passer rapidement du service client aux tâches pratiques en coulisses.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span data-l="en">Recent experience</span><span data-l="fr">Expérience récente</span></h2>
+        <div class="timeline">
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Knowledge management &amp; communications officer</span><span data-l="fr">Chargée de gestion des connaissances et de communication</span></h3><span class="when"><span data-l="en">Mar 2025 – Jun 2026</span><span data-l="fr">mars 2025 – juin 2026</span></span></div>
+            <p class="where"><span data-l="en">International Labour Organization, Geneva</span><span data-l="fr">Organisation internationale du Travail, Genève</span></p>
+            <ul data-l="en">
+              <li>Central communication focal point, turning complex research and policy into accessible articles and advocacy briefings.</li>
+              <li>Managed web content and designed visual materials in Canva and InDesign.</li>
+              <li>Coordinated data for large framework partnerships, including event organisation.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Point focal pour la communication, traduisant des recherches et des politiques complexes en articles accessibles et en notes de plaidoyer.</li>
+              <li>Gestion des contenus web et création de supports visuels avec Canva et InDesign.</li>
+              <li>Coordination des données de grands partenariats-cadres, y compris l’organisation d’événements.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Junior technical officer</span><span data-l="fr">Chargée technique junior</span></h3><span class="when"><span data-l="en">May 2024 – Feb 2025</span><span data-l="fr">mai 2024 – févr. 2025</span></span></div>
+            <p class="where"><span data-l="en">International Labour Organization, Geneva</span><span data-l="fr">Organisation internationale du Travail, Genève</span></p>
+            <ul data-l="en">
+              <li>Co-authored technical publications, including <i>Digitalization in employment policies</i> (2025).</li>
+              <li>Analysed country strategies and developed project proposals for safe, inclusive youth transitions to work.</li>
+              <li>Supported communication and outreach activities.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Co-autrice de publications techniques, dont <i>Digitalization in employment policies</i> (2025).</li>
+              <li>Analyse de stratégies nationales et élaboration de propositions de projets pour des transitions sûres et inclusives des jeunes vers l’emploi.</li>
+              <li>Appui aux activités de communication et de sensibilisation.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Project administrator</span><span data-l="fr">Administratrice de projets</span></h3><span class="when"><span data-l="en">Feb 2022 – Apr 2024</span><span data-l="fr">févr. 2022 – avr. 2024</span></span></div>
+            <p class="where"><span data-l="en">Swedish Public Employment Service, Stockholm</span><span data-l="fr">Service public de l’emploi suédois, Stockholm</span></p>
+            <ul data-l="en">
+              <li>Contributed to donor reporting, arranged high-level knowledge exchanges for international ministries and led an inter-agency working group on capacity development.</li>
+              <li>Coordinated international training programmes in social protection and decent work.</li>
+            </ul>
+            <ul data-l="fr">
+              <li>Contribution aux rapports pour les bailleurs de fonds, organisation d’échanges de haut niveau pour des ministères étrangers et direction d’un groupe de travail interinstitutionnel sur le renforcement des capacités.</li>
+              <li>Coordination de programmes de formation internationaux sur la protection sociale et le travail décent.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Unemployment insurance claims officer</span><span data-l="fr">Gestionnaire de dossiers d’assurance chômage</span></h3><span class="when"><span data-l="en">May 2020 – Feb 2022</span><span data-l="fr">mai 2020 – févr. 2022</span></span></div>
+            <p class="where">Akademikernas A-kassa, Stockholm</p>
+            <p data-l="en">Assessed unemployment benefit applications against the regulations, and explained complex rules to job seekers and employers in plain, accessible language.</p>
+            <p data-l="fr">Examen des demandes d’allocations chômage au regard de la réglementation, et explication de règles complexes aux demandeurs d’emploi et aux employeurs dans un langage clair et accessible.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">Political and communications officer</span><span data-l="fr">Chargée des affaires politiques et de la communication</span></h3><span class="when"><span data-l="en">Jan – Sep 2019</span><span data-l="fr">janv. – sept. 2019</span></span></div>
+            <p class="where"><span data-l="en">Embassy of Sweden, Kampala, Uganda</span><span data-l="fr">Ambassade de Suède, Kampala, Ouganda</span></p>
+            <p data-l="en">Managed the embassy’s social media and produced creative media content. Organised diplomatic events focused on climate and the environment.</p>
+            <p data-l="fr">Gestion des réseaux sociaux de l’ambassade et création de contenus médias. Organisation d’événements diplomatiques consacrés au climat et à l’environnement.</p>
+          </article>
+        </div>
+      </section>
+      <section class="card">
+        <h2><span data-l="en">Education</span><span data-l="fr">Formation</span></h2>
+        <div class="timeline">
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">MA, Communication for Development</span><span data-l="fr">Master en communication pour le développement</span></h3><span class="when">2023</span></div>
+            <p class="where"><span data-l="en">Malmö University, Sweden</span><span data-l="fr">Université de Malmö, Suède</span></p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3 class="role"><span data-l="en">BSc, Development Studies</span><span data-l="fr">Licence en études du développement</span></h3><span class="when">2018</span></div>
+            <p class="where"><span data-l="en">Lund University, Sweden</span><span data-l="fr">Université de Lund, Suède</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span data-l="en">Languages</span><span data-l="fr">Langues</span></h2>
+        <ul class="langs">
+          <li><div class="lang-row"><strong><span data-l="en">Swedish</span><span data-l="fr">Suédois</span></strong><span class="lang-level"><span data-l="en">Native</span><span data-l="fr">Langue maternelle</span></span></div><div class="beans" data-level="5" aria-label="5/5"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">English</span><span data-l="fr">Anglais</span></strong><span class="lang-level"><span data-l="en">Fluent</span><span data-l="fr">Courant</span></span></div><div class="beans" data-level="5" aria-label="5/5"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">French</span><span data-l="fr">Français</span></strong><span class="lang-level"><span data-l="en">Intermediate</span><span data-l="fr">Intermédiaire</span></span></div><div class="beans" data-level="3" aria-label="3/5"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">Arabic</span><span data-l="fr">Arabe</span></strong><span class="lang-level"><span data-l="en">Beginner</span><span data-l="fr">Débutante</span></span></div><div class="beans" data-level="1" aria-label="1/5"></div></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2><span data-l="en">Also</span><span data-l="fr">Autres atouts</span></h2>
+        <ul class="tags">
+          <li><span data-l="en">Web content (Drupal/WordPress)</span><span data-l="fr">Contenu web (Drupal/WordPress)</span></li>
+          <li><span data-l="en">Graphic design (Adobe)</span><span data-l="fr">Graphisme (Adobe)</span></li>
+          <li><span data-l="en">Textile handicraft</span><span data-l="fr">Artisanat textile</span></li>
+          <li><span data-l="en">Certified yoga teacher</span><span data-l="fr">Professeure de yoga certifiée</span></li>
+          <li><span data-l="en">Driving licence</span><span data-l="fr">Permis de conduire</span></li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2><span data-l="en">Good to know</span><span data-l="fr">Bon à savoir</span></h2>
+        <ul class="notes">
+          <li><span data-l="en">Available to start in December 2026 or January 2027</span><span data-l="fr">Disponible à partir de décembre 2026 ou janvier 2027</span></li>
+          <li><span data-l="en">EU citizen, with a Swiss B permit application in progress</span><span data-l="fr">Citoyenne de l’UE, demande de permis B en cours</span></li>
+          <li><span data-l="en">References available on request</span><span data-l="fr">Références disponibles sur demande</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="signoff">
+    <img class="portrait" src="portrait.jpg" alt="Moa Lindgren" width="104" height="104">
+    <p data-l="en">Thank you for taking the time to look at my CV. I would be more than happy to grab a coffee and talk about how my experience and skills could help your café.</p>
+    <p data-l="fr">Merci d’avoir pris le temps de lire mon CV. Je serais ravie de prendre un café avec vous pour discuter de ce que mon expérience et mes compétences peuvent apporter à votre établissement.</p>
+    <img class="signature" src="signature.png" alt="Moa Lindgren signature" width="341" height="198">
+  </footer>
+  <div class="pdf-row"><a class="pdf-btn" data-l="en" href="moa-lindgren-cv-barista-en.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Download as PDF</a><a class="pdf-btn" data-l="fr" href="moa-lindgren-cv-barista-fr.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Télécharger en PDF</a></div>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var hint = document.getElementById('copy-hint');
+  var copyLabel = { en: 'Copy', fr: 'Copier' }, copied = { en: 'Copied', fr: 'Copié' }, selected = { en: 'Selected', fr: 'Sélectionné' };
+  var current = 'en';
+
+  function setLang(l, save) {
+    current = l === 'fr' ? 'fr' : 'en';
+    root.setAttribute('data-lang', current);
+    root.lang = current;
+    document.getElementById('btn-en').setAttribute('aria-pressed', current === 'en');
+    document.getElementById('btn-fr').setAttribute('aria-pressed', current === 'fr');
+    hint.textContent = copyLabel[current];
+    if (save) { try { localStorage.setItem('cv-lang', current); } catch (e) {} }
+  }
+
+  var start = 'en';
+  try { if ((navigator.language || '').toLowerCase().indexOf('fr') === 0) start = 'fr'; } catch (e) {}
+  try { var saved = localStorage.getItem('cv-lang'); if (saved) start = saved; } catch (e) {}
+  var h = (location.hash || '').replace('#', '').toLowerCase();
+  if (h === 'fr' || h === 'en') start = h;
+  setLang(start, false);
+
+  document.querySelectorAll('.lang-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set'), true); });
+  });
+
+  var bean = function (on) {
+    return '<svg viewBox="0 0 13 16" aria-hidden="true"><ellipse cx="6.5" cy="8" rx="5.6" ry="7.3" class="' + (on ? 'on' : 'off') + '"/>' +
+      '<path class="crease" d="M6.9 1.6 C4.6 5 8.6 9.6 6.1 14.4"/></svg>';
+  };
+  document.querySelectorAll('.beans').forEach(function (el) {
+    var n = parseInt(el.getAttribute('data-level'), 10) || 0, html = '';
+    for (var i = 0; i < 5; i++) html += bean(i < n);
+    el.innerHTML = html;
+  });
+
+  var btn = document.getElementById('copy-email');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var selectIt = function () {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      hint.textContent = selected[current];
+    };
+    try { navigator.clipboard.writeText(email.textContent.trim()).then(function () { hint.textContent = copied[current]; }, selectIt); }
+    catch (e) { selectIt(); }
+    setTimeout(function () { hint.textContent = copyLabel[current]; }, 2000);
+  });
+})();
+</script>
+
+</body>
+</html>
