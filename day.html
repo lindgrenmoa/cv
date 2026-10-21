@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My day</title>
 <style>
-  :root { --text:#37352f; --muted:#787774; --ring:#ffffff; }
+  /* Background matches the orange "Today" box in Notion */
+  :root { --text:#37352f; --muted:#787774; --bg:#FBECDD; --ring:var(--bg); }
   @media (prefers-color-scheme: dark) {
-    :root { --text:#e6e6e4; --muted:#9b9a97; --ring:#191919; }
+    :root { --text:#e6e6e4; --muted:#9b9a97; --bg:#3A2A1D; }
   }
-  html, body { margin:0; background:transparent; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color:var(--text); }
+  html, body { margin:0; background:var(--bg); font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color:var(--text); }
   .wrap { display:flex; justify-content:center; padding:8px; }
   svg { width:100%; max-width:340px; height:auto; overflow:visible; }
   .seg { transition:opacity .2s, stroke-width .2s; cursor:default; }
