@@ -72,7 +72,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: 21px; letter
 .langs li { display: flex; align-items: center; gap: 16px; }
 .lang-row { display: contents; }
 .lang-row strong { width: 110px; flex: none; font-weight: 500; }
-.langs .beans { order: 1; }
+.langs .beans, .langs .donut { order: 1; }
 .langs .lang-level { order: 2; }
 .lang-level { font-size: 13px; color: var(--muted); }
 .beans { display: flex; gap: 6px; }
@@ -143,6 +143,11 @@ main a { color: var(--link); text-underline-offset: 2px; }
 .notes li::before { background: var(--bean); }
 .tagline { max-width: none; white-space: nowrap; }
 @media (max-width: 560px) { .tagline { white-space: normal; } }
+.donut { display: flex; flex: none; }
+.donut svg { width: 24px; height: 24px; }
+.donut circle { fill: none; stroke-width: 2.2; }
+.donut .track { stroke: var(--bean-empty); }
+.donut .fill { stroke: var(--bean); stroke-linecap: round; }
 </style>
 
 </head>
@@ -384,10 +389,10 @@ main a { color: var(--link); text-underline-offset: 2px; }
       <section class="card">
         <h2><span data-l="en">Languages</span><span data-l="fr">Langues</span></h2>
         <ul class="langs">
-          <li><div class="lang-row"><strong><span data-l="en">Swedish</span><span data-l="fr">Suédois</span></strong><span class="lang-level"><span data-l="en">Native</span><span data-l="fr">Langue maternelle</span></span></div><div class="beans" data-level="5" aria-label="5/5"></div></li>
-          <li><div class="lang-row"><strong><span data-l="en">English</span><span data-l="fr">Anglais</span></strong><span class="lang-level"><span data-l="en">Fluent</span><span data-l="fr">Courant</span></span></div><div class="beans" data-level="5" aria-label="5/5"></div></li>
-          <li><div class="lang-row"><strong><span data-l="en">French</span><span data-l="fr">Français</span></strong><span class="lang-level"><span data-l="en">Intermediate</span><span data-l="fr">Intermédiaire</span></span></div><div class="beans" data-level="3" aria-label="3/5"></div></li>
-          <li><div class="lang-row"><strong><span data-l="en">Arabic</span><span data-l="fr">Arabe</span></strong><span class="lang-level"><span data-l="en">Beginner</span><span data-l="fr">Débutante</span></span></div><div class="beans" data-level="1" aria-label="1/5"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">Swedish</span><span data-l="fr">Suédois</span></strong><span class="lang-level"><span data-l="en">Native</span><span data-l="fr">Langue maternelle</span></span></div><div class="donut" data-pct="100" aria-label="100%"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">English</span><span data-l="fr">Anglais</span></strong><span class="lang-level"><span data-l="en">Fluent</span><span data-l="fr">Courant</span></span></div><div class="donut" data-pct="100" aria-label="100%"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">French</span><span data-l="fr">Français</span></strong><span class="lang-level"><span data-l="en">Intermediate</span><span data-l="fr">Intermédiaire</span></span></div><div class="donut" data-pct="50" aria-label="50%"></div></li>
+          <li><div class="lang-row"><strong><span data-l="en">Arabic</span><span data-l="fr">Arabe</span></strong><span class="lang-level"><span data-l="en">Beginner</span><span data-l="fr">Débutante</span></span></div><div class="donut" data-pct="15" aria-label="15%"></div></li>
         </ul>
       </section>
 
@@ -460,13 +465,11 @@ main a { color: var(--link); text-underline-offset: 2px; }
     b.addEventListener('click', function () { setLang(b.getAttribute('data-set'), true); });
   });
 
-  var bean = function (on) {
-    return '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" class="' + (on ? 'on' : 'off') + '"/></svg>';
-  };
-  document.querySelectorAll('.beans').forEach(function (el) {
-    var n = parseInt(el.getAttribute('data-level'), 10) || 0, html = '';
-    for (var i = 0; i < 5; i++) html += bean(i < n);
-    el.innerHTML = html;
+  document.querySelectorAll('.donut').forEach(function (el) {
+    var p = Math.max(0, Math.min(100, parseFloat(el.getAttribute('data-pct')) || 0));
+    var r = 9, c = 2 * Math.PI * r;
+    el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="' + r + '"/>' +
+      '<circle class="fill" cx="12" cy="12" r="' + r + '" stroke-dasharray="' + (c * p / 100).toFixed(2) + ' ' + c.toFixed(2) + '" transform="rotate(-90 12 12)"/></svg>';
   });
 
   var btn = document.getElementById('copy-email');
