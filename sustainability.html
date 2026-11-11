@@ -141,6 +141,8 @@ main a { color: var(--link); text-underline-offset: 2px; }
 .lang-switch button[aria-pressed="true"] { background: var(--bean); color: #2e2b24; }
 .entry::before { border-color: var(--bean); }
 .notes li::before { background: var(--bean); }
+.tagline { max-width: none; white-space: nowrap; }
+@media (max-width: 560px) { .tagline { white-space: normal; } }
 </style>
 
 </head>
@@ -157,7 +159,7 @@ main a { color: var(--link); text-underline-offset: 2px; }
     <div class="hero-top">
       <div class="hero-name">
         <h1>Moa Lindgren</h1>
-        <p class="tagline"><span data-l="en">Social sustainability specialist &middot; ESG &middot; CSRD &middot; ESRS &middot; Humanitarian-Development-Peace Nexus</span><span data-l="fr">Spécialiste de la durabilité sociale &middot; ESG &middot; CSRD &middot; ESRS &middot; Nexus humanitaire-développement-paix</span></p>
+        <p class="tagline"><span data-l="en">Social sustainability specialist &middot; ESG &middot; CSRD &middot; ESRS</span><span data-l="fr">Spécialiste de la durabilité sociale &middot; ESG &middot; CSRD &middot; ESRS</span></p>
       </div>
     </div>
     <div class="chips">
